@@ -47,12 +47,11 @@ $adverts = [
 function format_price ($price) {
     $ceil_price = ceil($price);
     if ($ceil_price < 1000) {
-        return $ceil_price;
-    } else {
-        $format_price = number_format($ceil_price, 0, '', ' ');
+        return $ceil_price.' ₽';
     }
-    return $format_price.' ₽';
+    $format_price = number_format($ceil_price, 0, '', ' ');
 
+    return $format_price.' ₽';
 }
 
 ?>
@@ -133,7 +132,7 @@ function format_price ($price) {
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?= format_price( $value["price"] ) ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?= format_price( $value["price"] ) ?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
