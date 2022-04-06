@@ -62,10 +62,14 @@ $main_content = include_template('main.php', [
 ]);
 $layout_content = include_template('layout.php',[
     'content' => $main_content,
-    'title' => 'Главная'
+    'title' => 'Главная',
+    'is_auth' => rand(0, 1),
+    'user_name' => 'Paul',
+    'categories' => $categories
     ]);
 
 print($layout_content);
+
 ?>
 
 
