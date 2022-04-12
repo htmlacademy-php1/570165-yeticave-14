@@ -17,7 +17,8 @@
         </div>
         <ul class="lots__list">
             <!--заполните этот список из массива с товарами-->
-            <?php foreach($adverts as $key => $value): ?>
+            <?php foreach($adverts as $key => $value):
+                $res = back_hors_min($value['time_lot_end']) ?>
                 <li class="lots__item lot">
                     <div class="lot__image">
                         <img src="<?= htmlspecialchars($value['url']) ?>" width="350" height="260" alt="">
@@ -29,10 +30,13 @@
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost"><?= htmlspecialchars(format_price( $value["price"]) ) ?></span>
+                                <span class="lot__cost"><?= htmlspecialchars(format_price( $value['price']) ) ?></span>
                             </div>
-                            <div class="lot__timer timer">
-                                12:23
+
+                            <div class="lot__timer timer <?= $res[0] < 1 ? 'timer--finishing':'' ?> ">
+                                <?= str_pad($res[0], 2, '0', STR_PAD_LEFT) ?>
+                                :
+                                <?= str_pad($res[1], 2, '0', STR_PAD_LEFT) ?>
                             </div>
                         </div>
                     </div>
